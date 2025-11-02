@@ -17,6 +17,8 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", "\"https://newsapi.org/v2/\"")
     }
 
     buildTypes {
@@ -39,6 +41,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -70,6 +73,10 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     kapt(libs.hilt.compiler)
+
+    // GLide (with KSP)
+    implementation(libs.glide)
+    ksp(libs.glide.ksp)
 
     // Testing
     testImplementation(libs.junit)
