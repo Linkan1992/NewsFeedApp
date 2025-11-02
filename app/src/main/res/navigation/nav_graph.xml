@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/newsFeedFragment">
+    <fragment
+        android:id="@+id/newsFeedFragment"
+        android:name="com.linkan.newsfeedapp.ui.fragments.NewsFeedFragment"
+        android:label="News Feeds" >
+        <action
+            android:id="@+id/action_newsFeedFragment_to_newsFeedDetailFragment"
+            app:destination="@id/newsFeedDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsFeedDetailFragment"
+        android:name="com.linkan.newsfeedapp.ui.fragments.NewsFeedDetailFragment"
+        android:label="News Detail">
+        <argument
+            android:name="item"
+            app:argType="com.linkan.newsfeedapp.domain.model.NewsArticle"
+            app:nullable="true"/>
+    </fragment>
+
+</navigation>

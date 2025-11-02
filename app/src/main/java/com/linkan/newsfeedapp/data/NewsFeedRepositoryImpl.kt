@@ -12,7 +12,7 @@ class NewsFeedRepositoryImpl @Inject constructor (
     private val newsFeedService: NewsFeedService
 ) : NewsFeedRepository {
 
-    override suspend fun fetchNewsAboutEverythingSearchByKey(searchKey: String): Flow<ResultEvent<List<NewsArticle>>> {
+    override suspend fun fetchNewsAboutEverythingSearchByKey(searchKey: String, pageSize : Int, pageNumber : Int): Flow<ResultEvent<List<NewsArticle>>> {
         return flow {
             val response = safeApiCall {
                 newsFeedService.searchNewsForEverything(

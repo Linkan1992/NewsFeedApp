@@ -17,7 +17,7 @@ lifecycleVersion = "2.9.4"
 
 # Hilt & KSP
 hiltVersion = "2.48"
-kspVersion = "2.0.0-1.0.23"
+kspVersion = "2.0.21-1.0.25"
 kaptVersion = "2.0.21"
 
 # Retrofit & OkHttp
@@ -76,3 +76,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 hilt-android-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
 kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kaptVersion" }
+navigation-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigationUiKtx" }

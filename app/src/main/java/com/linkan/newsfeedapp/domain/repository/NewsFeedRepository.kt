@@ -5,5 +5,5 @@ import com.linkan.newsfeedapp.util.ResultEvent
 import kotlinx.coroutines.flow.Flow
 
 interface NewsFeedRepository {
-    suspend fun fetchNewsAboutEverythingSearchByKey(searchKey: String): Flow<ResultEvent<List<NewsArticle>>>
+    suspend fun fetchNewsAboutEverythingSearchByKey(searchKey: String, pageSize : Int, pageNumber : Int): Flow<ResultEvent<List<NewsArticle>>>
 }

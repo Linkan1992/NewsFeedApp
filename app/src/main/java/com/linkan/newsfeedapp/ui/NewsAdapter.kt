@@ -16,7 +16,7 @@ class NewsAdapter @Inject constructor(
 
     private var onItemClickListener: ((NewsArticle) -> Unit)? = null
 
-    fun deleteOnItemClickListener(listener: (NewsArticle) -> Unit) {
+    fun navigateOnItemClickListener(listener: (NewsArticle) -> Unit) {
         onItemClickListener = listener
     }
 

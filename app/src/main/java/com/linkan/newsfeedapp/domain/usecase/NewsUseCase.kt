@@ -9,7 +9,7 @@ import javax.inject.Inject
 class NewsUseCase @Inject constructor(
     private val repository: NewsFeedRepository
 ) {
-    suspend fun searchNewsForEverything(searchKey: String): Flow<ResultEvent<List<NewsArticle>>> {
-        return repository.fetchNewsAboutEverythingSearchByKey(searchKey)
+    suspend fun searchNewsForEverything(searchKey: String, pageSize : Int, pageNumber : Int): Flow<ResultEvent<List<NewsArticle>>> {
+        return repository.fetchNewsAboutEverythingSearchByKey(searchKey, pageSize, pageNumber)
     }
 }

@@ -43,7 +43,7 @@ class AppModule {
     @Provides
     @Singleton
     fun injectGlide(@ApplicationContext context: Context) : RequestManager = Glide.with(context).
-    setDefaultRequestOptions(RequestOptions.placeholderOf(R.drawable.ic_launcher_background)
-        .error(R.drawable.ic_launcher_background))
+    setDefaultRequestOptions(RequestOptions.placeholderOf(R.drawable.placeholder)
+        .error(R.drawable.placeholder))
 
 }

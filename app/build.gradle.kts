@@ -3,7 +3,9 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android.plugin)
     alias(libs.plugins.kotlin.ksp)
-    alias(libs.plugins.kotlin.kapt)
+   // alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.navigation.safeargs)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -72,7 +74,7 @@ dependencies {
     // Hilt (with KSP + KAPT for processors)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-    kapt(libs.hilt.compiler)
+    //kapt(libs.hilt.compiler)
 
     // GLide (with KSP)
     implementation(libs.glide)

@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp"
-    app:cardUseCompatPadding="true">
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imv_article_image"
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintDimensionRatio="W,1:1"
-            android:layout_marginVertical="8dp"
-            android:layout_marginStart="8dp"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="W,1:1.5"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/placeholder" />
@@ -29,34 +26,32 @@
             android:id="@+id/mtv_article_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="16dp"
             android:gravity="start"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:maxLines="1"
-            android:ellipsize="end"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imv_article_image"
-            app:layout_constraintTop_toTopOf="@id/imv_article_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imv_article_image"
             tools:text="Title ascdajsnjaksdnfjasndjdnfasjlndlansldnasndnaslndlasndls" />
+
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/mtv_article_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
+            android:layout_marginVertical="16dp"
             android:gravity="start"
             android:textColor="@color/black"
             android:textSize="12sp"
-            android:maxLines="2"
-            android:ellipsize="end"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintEnd_toEndOf="@id/mtv_article_title"
-            app:layout_constraintStart_toStartOf="@id/mtv_article_title"
-            app:layout_constraintTop_toBottomOf="@id/mtv_article_title"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="fadfadfadfdv fadfadfadf adfadf adfdafa fadf adfa dfadfa asdfasf ddafaf dadfaadfadfadfa adfadfadfad adfadfadf" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mtv_article_title"
+            app:layout_constraintVertical_bias="0"
+            tools:text="fadfadfadfdv fadfadfadf adfadf adfdafa fadf adfa dfadfa asdfasf ddafaf dadfaadfadfadfa adfadfadfad adfadfadf
+afknadjkfnadf anfnajfnajldnf adjnfjadnfjladnf asdjnfadjlnfadlnf adslfnjkadjlfnal" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</ScrollView>
