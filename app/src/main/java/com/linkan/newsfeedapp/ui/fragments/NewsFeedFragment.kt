@@ -131,10 +131,6 @@ class NewsFeedFragment : Fragment(R.layout.fragment_news_feed) {
             btnRetry.setOnClickListener {
                 showErrorLayout(false)
                 mViewModel.retry()
-                findNavController().navigate(
-                    NewsFeedFragmentDirections.actionNewsFeedFragmentToNewsFeedDetailFragment(
-                        NewsArticle())
-                )
             }
         }
     }
