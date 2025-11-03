@@ -27,8 +27,6 @@ class NewsFeedFragment : Fragment(R.layout.fragment_news_feed) {
     private var mBinding: FragmentNewsFeedBinding? = null
     private val mViewModel: MainViewModel by activityViewModels()
 
-    private val searchKey = "News"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -63,7 +61,7 @@ class NewsFeedFragment : Fragment(R.layout.fragment_news_feed) {
                                     firstVisibleItemPos >= 0
 
                         if (shouldPaginate) {
-                            mViewModel.loadNextPage(searchKey)
+                            mViewModel.loadNextPage(mViewModel.searchKey)
                         }
                     }
                 })
@@ -76,7 +74,7 @@ class NewsFeedFragment : Fragment(R.layout.fragment_news_feed) {
             }
 
             newsAdapter.setOnRetryClickListener {
-                mViewModel.retry(searchKey)
+                mViewModel.retry(mViewModel.searchKey)
             }
         }
     }
@@ -120,7 +118,7 @@ class NewsFeedFragment : Fragment(R.layout.fragment_news_feed) {
         mBinding?.apply {
             btnRetry.setOnClickListener {
                 showErrorLayout(false)
-                mViewModel.retry(searchKey)
+                mViewModel.retry(mViewModel.searchKey)
             }
         }
     }

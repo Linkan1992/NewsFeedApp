@@ -32,7 +32,7 @@ class NewsAdapter @Inject constructor(
 
     private val diffCallback = object : DiffUtil.ItemCallback<NewsArticle>() {
         override fun areItemsTheSame(oldItem: NewsArticle, newItem: NewsArticle): Boolean {
-            return oldItem == newItem
+            return oldItem.imageUrl == newItem.imageUrl
         }
 
         override fun areContentsTheSame(oldItem: NewsArticle, newItem: NewsArticle): Boolean {

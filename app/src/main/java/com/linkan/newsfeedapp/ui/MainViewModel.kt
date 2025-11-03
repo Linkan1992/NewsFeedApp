@@ -30,7 +30,7 @@ class MainViewModel @Inject constructor(
         MutableStateFlow<ResultEvent<List<NewsArticle>>>(ResultEvent.Loading)
     val newsFeedState = mNewsFeedState.asStateFlow()
 
-    private val searchKey = "News"
+    val searchKey = "News"
 
     init {
         if (loadedArticles.isEmpty()) {
@@ -80,7 +80,6 @@ class MainViewModel @Inject constructor(
     }
 
     fun retry(searchKey: String) {
-       // currentPage = 1
         searchNewsForEverythingByKey(searchKey)
     }
 
