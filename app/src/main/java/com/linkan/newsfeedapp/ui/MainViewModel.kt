@@ -30,12 +30,26 @@ class MainViewModel @Inject constructor(
         MutableStateFlow<ResultEvent<List<NewsArticle>>>(ResultEvent.Loading)
     val newsFeedState = mNewsFeedState.asStateFlow()
 
-    val searchKey = "News"
+    var currentSearchKey = "News"
 
     init {
         if (loadedArticles.isEmpty()) {
-            searchNewsForEverythingByKey(searchKey)
+            searchNewsForEverythingByKey(currentSearchKey)
         }
+    }
+
+    /**
+     * Called when user enters a new search key.
+     * Clears old data & restarts pagination.
+     */
+    fun searchNewKeyword(searchKey: String, pageSize: Int = 20) {
+        if (searchKey.isBlank() || searchKey == currentSearchKey) return
+
+        currentSearchKey = searchKey
+        currentPage = 1
+        isLastPage = false
+        loadedArticles.clear()
+        searchNewsForEverythingByKey(searchKey, pageSize)
     }
 
     fun searchNewsForEverythingByKey(
@@ -48,7 +62,7 @@ class MainViewModel @Inject constructor(
         if (isLoadMore) isPaginating = true
 
         viewModelScope.launch(Dispatchers.IO) {
-            /*if (!isLoadMore)*/ mNewsFeedState.value = ResultEvent.Loading
+            mNewsFeedState.value = ResultEvent.Loading
 
             newsUseCase.searchNewsForEverything(searchKey, pageSize, currentPage)
                 .stateIn(
@@ -68,10 +82,10 @@ class MainViewModel @Inject constructor(
                         }
 
                         is ResultEvent.Error -> {
-                            /*if (!isLoadMore)*/ mNewsFeedState.value = result
+                            mNewsFeedState.value = result
                         }
 
-                        ResultEvent.Loading -> /*if (!isLoadMore)*/ mNewsFeedState.value = result
+                        ResultEvent.Loading -> mNewsFeedState.value = result
                     }
                     isLoading = false
                     isPaginating = false
@@ -79,14 +93,14 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun retry(searchKey: String) {
-        searchNewsForEverythingByKey(searchKey)
+    fun retry() {
+        searchNewsForEverythingByKey(currentSearchKey)
     }
 
-    fun loadNextPage(searchKey: String, pageSize: Int = 20) {
+    fun loadNextPage(pageSize: Int = 20) {
         if (!isLastPage && !isLoading) {
             currentPage++
-            searchNewsForEverythingByKey(searchKey, pageSize, isLoadMore = true)
+            searchNewsForEverythingByKey(currentSearchKey, pageSize, isLoadMore = true)
         }
     }
 }

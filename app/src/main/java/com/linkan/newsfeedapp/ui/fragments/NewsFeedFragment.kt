@@ -61,7 +61,7 @@ class NewsFeedFragment : Fragment(R.layout.fragment_news_feed) {
                                     firstVisibleItemPos >= 0
 
                         if (shouldPaginate) {
-                            mViewModel.loadNextPage(mViewModel.searchKey)
+                            mViewModel.loadNextPage()
                         }
                     }
                 })
@@ -74,7 +74,7 @@ class NewsFeedFragment : Fragment(R.layout.fragment_news_feed) {
             }
 
             newsAdapter.setOnRetryClickListener {
-                mViewModel.retry(mViewModel.searchKey)
+                mViewModel.retry()
             }
         }
     }
@@ -118,7 +118,7 @@ class NewsFeedFragment : Fragment(R.layout.fragment_news_feed) {
         mBinding?.apply {
             btnRetry.setOnClickListener {
                 showErrorLayout(false)
-                mViewModel.retry(mViewModel.searchKey)
+                mViewModel.retry()
             }
         }
     }
