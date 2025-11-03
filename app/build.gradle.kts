@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android.plugin)
     alias(libs.plugins.kotlin.ksp)
-   // alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.navigation.safeargs)
     id("kotlin-parcelize")
 }
@@ -57,7 +56,6 @@ dependencies {
 
     // Lifecycle / ViewModel
     implementation(libs.lifecycle.viewmodel.ktx)
-    implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.viewmodel.savedstate)
 
@@ -74,7 +72,6 @@ dependencies {
     // Hilt (with KSP + KAPT for processors)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-    //kapt(libs.hilt.compiler)
 
     // GLide (with KSP)
     implementation(libs.glide)
