@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.linkan.newsfeedapp.R
 import com.linkan.newsfeedapp.databinding.FragmentNewsFeedBinding
-import com.linkan.newsfeedapp.domain.model.NewsArticle
 import com.linkan.newsfeedapp.ui.MainViewModel
 import com.linkan.newsfeedapp.ui.NewsAdapter
 import com.linkan.newsfeedapp.util.ResultEvent
