@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.linkan.newsfeedapp.R
 import com.linkan.newsfeedapp.databinding.FragmentNewsFeedBinding
+import com.linkan.newsfeedapp.domain.model.NewsArticle
 import com.linkan.newsfeedapp.ui.MainViewModel
 import com.linkan.newsfeedapp.ui.NewsAdapter
 import com.linkan.newsfeedapp.util.ResultEvent
@@ -36,6 +37,17 @@ class NewsFeedFragment : Fragment(R.layout.fragment_news_feed) {
         collectFlows()
         setupRetryButton()
         initRecyclerView()
+    }
+
+    fun onSearchQuery(query: String) {
+        mBinding?.apply {
+            // Check if this is actually a new query
+            val isNewQuery = mViewModel.currentSearchKey != query.trim()
+            if (isNewQuery) {
+                showErrorLayout(false)
+                mViewModel.searchNewKeyword(query)
+            }
+        }
     }
 
     private fun initRecyclerView() {
@@ -119,6 +131,10 @@ class NewsFeedFragment : Fragment(R.layout.fragment_news_feed) {
             btnRetry.setOnClickListener {
                 showErrorLayout(false)
                 mViewModel.retry()
+                findNavController().navigate(
+                    NewsFeedFragmentDirections.actionNewsFeedFragmentToNewsFeedDetailFragment(
+                        NewsArticle())
+                )
             }
         }
     }

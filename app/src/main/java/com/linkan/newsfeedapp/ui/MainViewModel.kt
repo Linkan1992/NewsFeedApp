@@ -43,6 +43,7 @@ class MainViewModel @Inject constructor(
      * Clears old data & restarts pagination.
      */
     fun searchNewKeyword(searchKey: String, pageSize: Int = 20) {
+
         if (searchKey.isBlank() || searchKey == currentSearchKey) return
 
         currentSearchKey = searchKey
