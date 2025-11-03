@@ -17,8 +17,8 @@ class NewsFeedRepositoryImpl @Inject constructor (
             val response = safeApiCall {
                 newsFeedService.searchNewsForEverything(
                     searchQuery = searchKey,
-                    pageSize = 10,
-                    pageNumber = 1
+                    pageSize = pageSize,
+                    pageNumber = pageNumber
                 )
             }.run {
                 when (this) {

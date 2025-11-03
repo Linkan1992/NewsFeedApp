@@ -16,24 +16,12 @@ suspend fun <T> safeApiCall(apiFun: suspend () -> Response<T>?): ResultEvent<T> 
             ?.let { body -> return ResultEvent.Success(data = body)
         }
 
+        if (response?.code() == 429) {
+            return ResultEvent.Error("Rate limit exceeded. Please try again later.", null)
+        }
+
         return ResultEvent.Error(response?.message() ?: "Error", null)
     } catch (exe: Exception) {
         return ResultEvent.Error(exe.message ?: "No Data", null)
-    }
-}
-
-fun <T> CoroutineScope.runOnBackgroundDispatcher(
-    startLoader : () -> Unit,
-    backgroundFunc : suspend () -> T,
-    callback : (T) -> Unit) {
-
-    startLoader.invoke()
-    this.launch(Dispatchers.IO) {
-        Log.d("safeApiCall", "I'm working on Thread = ${Thread.currentThread().name}")
-        val result = backgroundFunc.invoke()
-        withContext(Dispatchers.Main){
-            Log.d("safeApiCall", "I'm working on Thread = ${Thread.currentThread().name}")
-            callback.invoke(result)
-        }
     }
 }
