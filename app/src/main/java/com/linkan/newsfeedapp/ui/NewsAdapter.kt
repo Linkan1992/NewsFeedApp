@@ -47,16 +47,24 @@ class NewsAdapter @Inject constructor(
         set(value) = recyclerDiffList.submitList(value)
 
     fun showPagingLoader(show: Boolean) {
+        if (showLoader == show) return
+        val lastPosition = itemCount
         showLoader = show
-        if (show) showError = false
-        notifyDataSetChanged()
+        showError = false
+        if (show) {
+            notifyItemInserted(lastPosition)
+        } else {
+            notifyItemRemoved(lastPosition - 1)
+        }
     }
 
     fun showPagingError(errorMessage: String? = null) {
+        if (showError) return
+        this.errorMessage = errorMessage
+        val lastPosition = itemCount
         showError = true
         showLoader = false
-        this.errorMessage = errorMessage
-        notifyDataSetChanged()
+        notifyItemInserted(lastPosition)
     }
 
 
