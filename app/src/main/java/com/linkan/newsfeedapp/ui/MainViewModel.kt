@@ -30,6 +30,14 @@ class MainViewModel @Inject constructor(
         MutableStateFlow<ResultEvent<List<NewsArticle>>>(ResultEvent.Loading)
     val newsFeedState = mNewsFeedState.asStateFlow()
 
+    private val searchKey = "News"
+
+    init {
+        if (loadedArticles.isEmpty()) {
+            searchNewsForEverythingByKey(searchKey)
+        }
+    }
+
     fun searchNewsForEverythingByKey(
         searchKey: String,
         pageSize: Int = 20,

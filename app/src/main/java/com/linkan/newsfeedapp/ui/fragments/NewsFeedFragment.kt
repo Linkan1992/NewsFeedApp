@@ -31,7 +31,6 @@ class NewsFeedFragment : Fragment(R.layout.fragment_news_feed) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mViewModel.searchNewsForEverythingByKey(searchKey)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
